@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.0 rc2"
+
+
+    defaultConfig {
+        applicationId "com.skplanet.vertical.instantapp"
+        minSdkVersion 23
+        targetSdkVersion 25
+        versionCode 4
+        versionName "4.0"
+    }
+    signingConfigs {
+        release {
+            if (project.hasProperty("ANDROID_RELEASE_STORE_FILE")) {
+                storeFile file(ANDROID_RELEASE_STORE_FILE)
+                storePassword ANDROID_RELEASE_STORE_PASSWORD
+                keyAlias ANDROID_RELEASE_KEY_ALIAS
+                keyPassword ANDROID_RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    implementation project(':feature')
+    implementation project(':base')
+}

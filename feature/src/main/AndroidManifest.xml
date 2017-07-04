@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.skplanet.vertical.instantapp.feature">
+
+    <application>
+        <meta-data
+            android:name="asset_statements"
+            android:resource="@string/asset_statements" />
+        <activity android:name=".MainActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true"
+                android:order="1">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="http"
+                    android:host="jusung.synology.me"
+                    android:pathPattern="/hello" />
+                <data
+                    android:scheme="https"
+                    android:host="jusung.synology.me"
+                    android:pathPattern="/hello" />
+            </intent-filter>
+            <meta-data
+                android:name="default-url"
+                android:value="https://jusung.synology.me/.*" />
+        </activity>
+    </application>
+
+</manifest>
